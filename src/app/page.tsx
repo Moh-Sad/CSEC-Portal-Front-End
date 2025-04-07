@@ -96,6 +96,7 @@ export default function Home() {
           Go to nextjs.org →
         </a>
       </footer>
+      <div className="bg-blue"> Hello World </div>
     </div>
   );
 }
