@@ -1,6 +1,7 @@
 import Image from "next/image";
 import ShakeHand from "../../src/public/ShakeHand.png";
 import { Input } from "@/components/ui/input";
+import { LuSearch } from "react-icons/lu";
 
 interface NavbarProps {
   name: string;
@@ -17,7 +18,7 @@ export default function Navbar({ name, time }: NavbarProps) {
   };
 
   return (
-    <div className="flex w-full h-20 gap-4 items-center p-4">
+    <div className="flex h-20 gap-4 items-center p-4 ml-2">
       <div className="flex gap-3 ml-5">
         <div>
           <div className="flex">
@@ -33,7 +34,8 @@ export default function Navbar({ name, time }: NavbarProps) {
         </div>
       </div>
 
-      <div className="ml-20">
+      <div className="flex gap-2 border-1 border-gray-300 rounded-[4px] items-center p-2">
+        <LuSearch size={23} className="items-center"/>
         <Input
           type="text"
           placeholder="Search"
