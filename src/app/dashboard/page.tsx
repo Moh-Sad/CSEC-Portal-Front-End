@@ -6,7 +6,7 @@ export default function Home() {
       <div>
        
       </div>
-      <div className="flex items-center justify-center h-[100vh] w-full">
+      <div className="flex items-center justify-center h-[100vh]">
         <h1 className="text-3xl font-bold">In Progress ...</h1>
       </div>
     </div>

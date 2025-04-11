@@ -22,7 +22,7 @@ export default function Navbar({ name, time }: NavbarProps) {
   };
 
   return (
-    <div className="flex h-20 w-full justify-between items-center p-4 ml-2">
+    <div className="flex h-20 w-full justify-between items-center p-4 ml-50">
       <div className=" pl-5 " style={{paddingLeft: "5px"}} >
         <div className="flex gap-3 ml-5">
           <div>

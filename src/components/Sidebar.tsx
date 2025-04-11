@@ -86,13 +86,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar
       {...props}
-      className="bg-white dark:bg-gray-950"
-      // Change to offcanvas for full collapse
       collapsible="offcanvas"
+      style={{ padding: "25px" }}
     >
       <div
-        className="bg-[#34495E0D] rounded-2xl w-55 h-150"
-        style={{ margin: "25px" }}
+        className="bg-[#34495E0D] rounded-2xl w-55 h-auto"
+        
       >
         <SidebarHeader className="p-10" style={{ paddingTop: "30px" }}>
           <div className="flex items-center justify-center gap-2">
@@ -119,7 +118,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             ))}
           </SidebarMenu>
         </SidebarContent>
-        <SidebarFooter style={{ paddingTop: "70px" }}>
+        <SidebarFooter style={{ paddingTop: "70px", paddingBottom: "20px" }}>
           <div className="flex justify-center gap-3">
             <div className="flex gap-3 items-center justify-center">
               <Button

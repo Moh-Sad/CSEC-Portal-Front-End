@@ -15,7 +15,7 @@ export default function RootLayout({
         <AppSidebar />
         <main className="w-full h-full">
           <div className="flex space-x-6 items-center ">
-            <SidebarTrigger style={{marginLeft: "5px"}}/>
+            <SidebarTrigger style={{marginLeft: "3px"}}/>
             <Navbar name="Henok" />
           </div>
           {children}
