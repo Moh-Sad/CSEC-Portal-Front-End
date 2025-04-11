@@ -1,7 +1,8 @@
 import Image from "next/image";
-import ShakeHand from "../../src/public/ShakeHand.png";
+import ShakeHand from "../../src/public/img/ShakeHand.png";
 import { Input } from "@/components/ui/input";
 import { LuSearch } from "react-icons/lu";
+import { GoBell } from "react-icons/go";
 
 interface NavbarProps {
   name: string;
@@ -34,15 +35,15 @@ export default function Navbar({ name, time }: NavbarProps) {
         </div>
       </div>
 
-      <div className="flex gap-2 border-1 border-gray-300 rounded-[4px] items-center p-2">
-        <LuSearch size={23} className="items-center"/>
-        <Input
-          type="text"
-          placeholder="Search"
-          className="p-2"
-          width={261}
-          height={50}
-        />
+      <div className="flex justify-center gap-2 border-1 border-gray-200 rounded-[8px] h-12 items-center p-2 ml-5 focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-opacity-50 focus-visible:ring-1">
+        <LuSearch size={25} className="p-6 items-center" />
+        <div className="p-2">
+          <Input type="text" placeholder="Search" />
+        </div>
+      </div>
+
+      <div className="flex w-12 h-12 bg-[#34495E1A] border-1 border-gray-200 rounded-[8px] justify-center items-center">
+        <GoBell size={20}/>
       </div>
     </div>
   );

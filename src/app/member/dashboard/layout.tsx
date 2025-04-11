@@ -8,15 +8,13 @@ export default function RootLayout({
 }>) {
   return (
     <div className="flex">
-      <div>
-        <SidebarProvider>
-          <AppSidebar />
-          <main>
-            <SidebarTrigger />
-          </main>
-        </SidebarProvider>
-      </div>
-      <div className="w-full h-full">{children}</div>
+      <SidebarProvider>
+        <AppSidebar />
+        <main className="flex w-full h-full">
+          <SidebarTrigger />
+          {children}
+        </main>
+      </SidebarProvider>
     </div>
   );
 }
