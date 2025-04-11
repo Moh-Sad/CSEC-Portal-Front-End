@@ -1,68 +1,155 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
-import "../app/globals.css";
+"use client";
 
+import Img from "next/image";
+import Logoipsum from "./icons/Logoipsum.png";
+import { useTheme } from "next-themes";
+import type * as React from "react";
+import {
+  Users,
+  Layers,
+  ClipboardCheck,
+  Calendar,
+  FolderOpen,
+  User,
+  ShieldCheck,
+  Settings,
+  Moon,
+  Sun,
+} from "lucide-react";
+
+import { Button } from "@/components/ui/button";
 import {
   Sidebar,
   SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
+  SidebarFooter,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
+  SidebarRail,
+} from "@/components/ui/sidebar";
+import { DashboardIcon } from "./icons/dashboard-icon";
 
-// Menu items.
-const items = [
+// Navigation items matching the design
+const navigationItems = [
   {
-    title: "Home",
+    title: "Dashboard",
+    icon: DashboardIcon, // Using our custom dashboard icon
     url: "#",
-    icon: Home,
+    isActive: true,
   },
   {
-    title: "Inbox",
+    title: "All Members",
+    icon: Users,
     url: "#",
-    icon: Inbox,
   },
   {
-    title: "Calendar",
+    title: "All Divisions",
+    icon: Layers,
     url: "#",
+  },
+  {
+    title: "Attendance",
+    icon: ClipboardCheck,
+    url: "#",
+  },
+  {
+    title: "Sessions & Events",
     icon: Calendar,
+    url: "#",
   },
   {
-    title: "Search",
+    title: "Resources",
+    icon: FolderOpen,
     url: "#",
-    icon: Search,
+  },
+  {
+    title: "Profile",
+    icon: User,
+    url: "#",
+  },
+  {
+    title: "Administration",
+    icon: ShieldCheck,
+    url: "#",
   },
   {
     title: "Settings",
-    url: "#",
     icon: Settings,
+    url: "#",
   },
-]
+];
 
-export function AppSidebar() {
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { setTheme } = useTheme();
+
   return (
-    <Sidebar className="flex flex-col p-5 bg-yellow-50 w-64 h-screen">
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-      </SidebarContent>
+    <Sidebar
+      {...props}
+      className="bg-white dark:bg-gray-950"
+      // Change to offcanvas for full collapse
+      collapsible="offcanvas"
+    >
+      <div
+        className="bg-[#34495E0D] rounded-2xl w-55 h-150"
+        style={{ margin: "25px" }}
+      >
+        <SidebarHeader className="p-10" style={{ paddingTop: "30px" }}>
+          <div className="flex items-center justify-center gap-2">
+            <Img src={Logoipsum} alt="Logo icon and name" />
+          </div>
+        </SidebarHeader>
+        <SidebarContent style={{ paddingLeft: "40px", paddingTop: "30px" }}>
+          <SidebarMenu className="mt-2 gap-2">
+            {navigationItems.map((item) => (
+              <SidebarMenuItem key={item.title}>
+                <SidebarMenuButton
+                  asChild
+                  isActive={item.isActive}
+                  // Adjusted to align items consistently
+                  className="flex items-center px-4 py-2.5 gap-3"
+                  tooltip={item.title}
+                >
+                  <a href={item.url} className="flex items-center">
+                    <item.icon className="h-5 w-5 mr-3" />
+                    <span>{item.title}</span>
+                  </a>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            ))}
+          </SidebarMenu>
+        </SidebarContent>
+        <SidebarFooter style={{ paddingTop: "70px" }}>
+          <div className="flex justify-center gap-3">
+            <div className="flex gap-3 items-center justify-center">
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={() => setTheme("light")}
+                className="flex h-10 w-20 rounded-md items-center justify-center bg-[#003087]"
+                aria-label="Light mode"
+              >
+                <Sun className="h-4 w-4" color="#F8F8F8"/>
+                <h3 className="text-[#F8F8F8]" style={{marginLeft: "5px"}}> Light </h3>
+              </Button>
+            </div>
+
+            <div className="flex gap-5 items-center justify-center">
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={() => setTheme("dark")}
+                className="flex h-10 w-20 rounded-md items-center justify-center bg-[#34495E0D]"
+                aria-label="Dark mode"
+              >
+                <Moon className="h-4 w-4" />
+                <h3 style={{marginLeft: "5px"}}> Dark </h3>
+              </Button>
+            </div>
+          </div>
+        </SidebarFooter>
+        <SidebarRail />
+      </div>
     </Sidebar>
-  )
+  );
 }

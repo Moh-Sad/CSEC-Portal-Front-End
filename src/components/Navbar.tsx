@@ -31,8 +31,8 @@ export default function Navbar({ name, time }: NavbarProps) {
               <Image
                 src={ShakeHand}
                 alt="Handshake icon"
-                width={18}
-                height={14}
+                width={25}
+                height={25}
               />
             </div>
             <h3 className="text-sm text-gray-600">Good {getTimeOfDay()}</h3>
