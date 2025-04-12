@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import Image from "next/image";
-import logo from "./ccccc.png"; 
+import logo from "/ccccc.png"; 
 
 export default function LoginPage() {
   return (
